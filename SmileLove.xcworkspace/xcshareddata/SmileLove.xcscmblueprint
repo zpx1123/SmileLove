@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "60C0A0C7F4EE2184BFA11E5A95E51387F0C7F10B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "60C0A0C7F4EE2184BFA11E5A95E51387F0C7F10B" : 0,
+    "24AE51A707BB377F9C20DD41C29A42DB53EC8BB3" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0672CE2E-2BDD-4DD8-860E-3CDE65E7EA2A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "60C0A0C7F4EE2184BFA11E5A95E51387F0C7F10B" : "SmileLove\/",
+    "24AE51A707BB377F9C20DD41C29A42DB53EC8BB3" : "Animations\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "SmileLove",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "SmileLove.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/YouXianMing\/Animations.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "24AE51A707BB377F9C20DD41C29A42DB53EC8BB3"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/zpx1123\/SmileLove.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "60C0A0C7F4EE2184BFA11E5A95E51387F0C7F10B"
+    }
+  ]
+}

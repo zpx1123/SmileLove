@@ -16,20 +16,27 @@
 #import "PushAnimator.h"
 #import "PopAnimator.h"
 #import "UIFont+Fonts.h"
-//#import "ButtonPressViewController.h"
-#import "TransformFadeViewController.h"
-#import "StrokeCircleLayerConfigure.h"
-#import "ScrollBlurImageViewController.h"
-#import "LiveImageViewController.h"
-#import "UINavigationController+Push_Pop.h"
 #import "OffsetCellViewController.h"
-
+#import "UINavigationController+Push_Pop.h"
+#import "AlertViewController.h"
+#import "ButtonPressViewController.h"
+#import "TransformFadeViewController.h"
+#import "CountDownTimerController.h"
+#import "ShimmerController.h"
+#import "PressAnimationButtonController.h"
+#import "GifPictureController.h"
+#import "SCViewShakerController.h"
+#import "ScrollViewAnimationController.h"
+#import "ReplicatorLineViewController.h"
+#import "BaseControlViewController.h"
+#import "QRCodeViewController.h"
 
 @interface MessageViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong)UIView * titleView;
 @property(nonatomic,strong)UITableView * tableView;
 @property(nonatomic,strong)NSMutableArray * dataSouceArrs;
+@property(nonatomic, strong) NSArray *demoVCLists;
 
 @end
 
@@ -59,23 +66,25 @@
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     [self.view addSubview:_tableView];
     
-}
-
-
-
-
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    self.title = NSLocalizedString(@"IOS程序开发类",@"");
     
-    return 0.1;
+    
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 0.1;
-}
+
+
+
+
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+//    
+//    return 0.1;
+//}
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+//    return 0.1;
+//}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    //    return self.dataSouceArrs.count;
-    return 20;
+   return self.demoVCLists.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -90,8 +99,8 @@
     
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     
-    cell.textLabel.text=@"1111";
-    
+    cell.textLabel.font = [UIFont systemFontOfSize:14];
+    cell.textLabel.text = self.demoVCLists[indexPath.row][@"title"];
     return cell;
 }
 #pragma mark - UITableViewDelegate
@@ -99,18 +108,20 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    return 70;
+    return 55;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+#pragma mark -- UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    UITableViewCell *cell = (UITableViewCell*)[self tableView:tableView cellForRowAtIndexPath:indexPath];
+    UIViewController *demoVC = [[self.demoVCLists[indexPath.row][@"class"] alloc] init];
+    demoVC.title = self.demoVCLists[indexPath.row][@"title"];
+
+    [self.navigationController pushVC:demoVC animated:YES];
     
     
-    
-    OffsetCellViewController  * button=[[OffsetCellViewController alloc]init];
-    button.title=@"周鹏翔";
-    [self.navigationController pushVC :button animated:YES];
 }
 
 
@@ -197,6 +208,60 @@
     } afterDelaySecs:2.f];
     
     self.navigationItem.titleView=self.titleView;
+}
+-(NSArray*)demoVCLists
+{
+    if (_demoVCLists == nil)
+    {
+        _demoVCLists = @[@{@"title":NSLocalizedString(@"1.OffsetCellViewController - Vert&Horz", @""),
+                           @"class":[OffsetCellViewController class]
+                           },
+                         @{@"title":NSLocalizedString(@"2.AlertViewController - Combine with UIScrollView", @""),
+                           @"class":[AlertViewController class]
+                           },
+                         @{@"title":NSLocalizedString(@"3.ButtonPressViewController - Gravity&Fill", @""),
+                           @"class":[ButtonPressViewController class]
+                           },
+                         @{@"title":NSLocalizedString(@"4.TransformFadeViewController - Wrap content", @""),
+                           @"class":[TransformFadeViewController class]
+                           },
+                         @{@"title":NSLocalizedString(@"5.CountDownTimerController - Weight & Relative margin", @""),
+                           @"class":[CountDownTimerController class]
+                           },
+                         @{@"title":NSLocalizedString(@"6.ShimmerController - Weight & Relative margin", @""),
+                           @"class":[ShimmerController class]
+                           },
+                         @{@"title":NSLocalizedString(@"7.PressAnimationButtonController - Weight & Relative margin", @""),
+                           @"class":[PressAnimationButtonController class]
+                           },
+                         @{@"title":NSLocalizedString(@"8.GifPictureController - Weight & Relative margin", @""),
+                           @"class":[GifPictureController class]
+                           },
+                         @{@"title":NSLocalizedString(@"9.SCViewShakerController - Weight & Relative margin", @""),
+                           @"class":[SCViewShakerController class]
+                           },
+                         @{@"title":NSLocalizedString(@"10.ScrollViewAnimationController - Weight & Relative margin", @""),
+                           @"class":[ScrollViewAnimationController class]
+                           },
+                         @{@"title":NSLocalizedString(@"11.ReplicatorLineViewController - Weight & Relative margin", @""),
+                           @"class":[ReplicatorLineViewController class]
+                           },
+                         @{@"title":NSLocalizedString(@"12.BaseControlViewController - Weight & Relative margin", @""),
+                           @"class":[BaseControlViewController class]
+                           },
+                         @{@"title":NSLocalizedString(@"13.QRCodeViewController - Weight & Relative margin", @""),
+                           @"class":[QRCodeViewController class]
+                           },
+                         
+                         
+                         ];
+        
+        
+        
+        
+    }
+    
+    return _demoVCLists;
 }
 
 -(UIView *)titleView{

@@ -41,7 +41,7 @@
     [UINavigationBar appearance].backIndicatorImage = [UIImage new];
     [[UINavigationBar appearance] lt_setBackgroundColor:[UIColor clearColor]];
     UIColor * color = [UIColor colorWithRed:250.0/255.0 green:60.0/255.0 blue:67.0/255.0 alpha:1];
-    [[UINavigationBar appearance] lt_setBackgroundColor:[color colorWithAlphaComponent:0.5]];
+    [[UINavigationBar appearance] lt_setBackgroundColor:[color colorWithAlphaComponent:1.0]];
     
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setBarTintColor:[UIColor blueColor]];

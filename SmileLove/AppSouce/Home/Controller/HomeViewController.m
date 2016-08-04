@@ -8,7 +8,7 @@
 
 #import "HomeViewController.h"
 #import <YYKit/YYKit.h>
-
+#import "UINavigationBar+Awesome.h"
 #define DURATION 0.7f
 #define IMAGE_COUNT 5
 
@@ -44,7 +44,32 @@ typedef enum : NSUInteger {
 @end
 
 @implementation HomeViewController
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+//    self.tableView.delegate = self;
+//    [self scrollViewDidScroll:self.tableView];
+    
+//    UIColor * color = [UIColor colorWithRed:0/255.0 green:175/255.0 blue:240/255.0 alpha:1];
+//    CGFloat offsetY = scrollView.contentOffset.y;
+//    if (offsetY > NAVBAR_CHANGE_POINT) {
+//        CGFloat alpha = MIN(1, 1 - ((NAVBAR_CHANGE_POINT + 64 - offsetY) / 64));
+//        [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:alpha]];
+//    } else {
+//        [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:0]];
+//    }
+    
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    UIColor * color = [UIColor colorWithRed:0/255.0 green:175/255.0 blue:240/255.0 alpha:0];
+     [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:0]];
+}
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+//    self.tableView.delegate = nil;
+    [self.navigationController.navigationBar lt_reset];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title=@"I LOVE YOU";
@@ -52,7 +77,7 @@ typedef enum : NSUInteger {
 //    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"04.jpg"]];
     backgroundView=[[UIImageView alloc]init];
     [self.view addSubview:backgroundView];
-    backgroundView.image=[UIImage imageNamed:@"0.jpg"];
+    backgroundView.image=[UIImage imageNamed:@"1"];
     backgroundView.contentMode=UIViewContentModeScaleAspectFill;
     backgroundView.size=CGSizeMake(self.view.frame.size.width, self.view.frame.size.height);
     backgroundView.center=self.view.center;
@@ -144,28 +169,28 @@ typedef enum : NSUInteger {
 -(void)rightSwipe:(UISwipeGestureRecognizer *)gesture{
     [self transitionAnimation:NO];
 }
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    
-    //1.创建转场动画对象
-    CATransition *transition=[[CATransition alloc]init];
-    
-    //2.设置动画类型,注意对于苹果官方没公开的动画类型只能使用字符串，并没有对应的常量定义
-    transition.type=@"rippleEffect";
-    
-    //设置子类型
-    if (/* DISABLES CODE */ (YES)) {
-        transition.subtype=kCATransitionFromRight;
-    }else{
-        transition.subtype=kCATransitionFromLeft;
-    }
-    //设置动画时常
-    transition.duration=0.7f;
-    
-    //3.设置转场后的新视图添加转场动画
-    backgroundView.image=[self getImage:YES];
-    [backgroundView.layer addAnimation:transition forKey:@"KCTransitionAnimation"];
-}
+//-(void)viewDidAppear:(BOOL)animated{
+//    [super viewDidAppear:animated];
+//    
+//    //1.创建转场动画对象
+//    CATransition *transition=[[CATransition alloc]init];
+//    
+//    //2.设置动画类型,注意对于苹果官方没公开的动画类型只能使用字符串，并没有对应的常量定义
+//    transition.type=@"rippleEffect";
+//    
+//    //设置子类型
+//    if (/* DISABLES CODE */ (YES)) {
+//        transition.subtype=kCATransitionFromRight;
+//    }else{
+//        transition.subtype=kCATransitionFromLeft;
+//    }
+//    //设置动画时常
+//    transition.duration=0.7f;
+//    
+//    //3.设置转场后的新视图添加转场动画
+//    backgroundView.image=[self getImage:YES];
+//    [backgroundView.layer addAnimation:transition forKey:@"KCTransitionAnimation"];
+//}
 -(void)tapGesture:(UITapGestureRecognizer *)tap{
     
     //1.创建转场动画对象
@@ -353,7 +378,7 @@ typedef enum : NSUInteger {
     }else{
         _currentIndex=(_currentIndex-1+IMAGE_COUNT)%IMAGE_COUNT;
     }
-    NSString *imageName=[NSString stringWithFormat:@"%i.jpg",_currentIndex];
+    NSString *imageName=[NSString stringWithFormat:@"%i.png",_currentIndex];
     return [UIImage imageNamed:imageName];
 }
 
